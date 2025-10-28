@@ -10,7 +10,7 @@ import { store } from "@/redux/Store";
 import { setUser } from "@/redux/authSlice";
 import { toast } from "sonner";
 import axios from "axios";
-import API_BASE_URL from "@/api/config";
+
 
 export default function Navbar2() {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function Navbar2() {
     try {
       // ✅ Changed from GET to POST method
       const res = await axios.post(
-        "${API_BASE_URL}/api/users/logout",
+        "http://localhost:8000/api/users/logout",
         {},
         {
           withCredentials: true,
