@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import Navbar2 from "./Navbar2";
 import { useSelector } from "react-redux";
+import API_BASE_URL from "@/api/config";
 
 
 
@@ -44,7 +45,7 @@ const {user} = useSelector(store => store.auth);
       formData.append("file", input.file);
     }
 
-    axios.post("http://localhost:8000/api/users/register", formData, {
+    axios.post("${API_BASE_URL}/api/users/register", formData, {
       headers: {
         "Content-Type": "multipart/form-data"
       },
