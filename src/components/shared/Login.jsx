@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "@/redux/authSlice";
 import { Loader2 } from "lucide-react";
 import Navbar2 from "./Navbar2";
+import API_BASE_URL from "@/api/config";
 
 export default function Login() {
 
@@ -34,7 +35,7 @@ export default function Login() {
 
     try {
       dispatch(setLoading(true)); // Set loading state to true
-      const res = await axios.post(`http://localhost:8000/api/users/login`, input, {
+      const res = await axios.post(`${API_BASE_URL}/api/users/login`, input, {
         headers: {
           "Content-Type": "application/json"
         },
