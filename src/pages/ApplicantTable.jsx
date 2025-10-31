@@ -11,6 +11,7 @@ import { MoreHorizontal } from "lucide-react";
 import React from "react";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import API_BASE_URL from "@/api/config";
 
 const shortListingStatus = ["Accepted", "Rejected"];
 
@@ -19,7 +20,7 @@ export default function ApplicantTable() {
 
   const handleStatusUpdate = async (applicationId, status) => {
     try {
-      await axios.post(`http://localhost:8000/api/applications/status/${applicationId}/update`, { status }, { withCredentials: true });
+      await axios.post(`${API_BASE_URL}/api/applications/status/${applicationId}/update`, { status }, { withCredentials: true });
       // Optionally refresh data or update local state
       window.location.reload(); // Simple refresh for now
     } catch (error) {

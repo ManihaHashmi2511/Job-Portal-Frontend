@@ -8,6 +8,7 @@ import { HiCash, HiClock, HiUser } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import API_BASE_URL from "@/api/config";
 
 export default function JobDescription({ job }) {
   const params = useParams();
@@ -26,7 +27,7 @@ export default function JobDescription({ job }) {
     const fetchSingleJob = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/jobs/get/${jobId}`,
+          `${API_BASE_URL}/api/jobs/get/${jobId}`,
           { withCredentials: true }
         );
         if (res.status === 200) {
@@ -54,7 +55,7 @@ export default function JobDescription({ job }) {
 
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/applications/apply/${jobId}`,
+        `${API_BASE_URL}/api/applications/apply/${jobId}`,
         {},
         { withCredentials: true }
       );
@@ -62,7 +63,7 @@ export default function JobDescription({ job }) {
       if (res.status === 200) {
         // Refetch the job data to update the state properly
         const updatedJobRes = await axios.get(
-          `http://localhost:8000/api/jobs/get/${jobId}`,
+          `${API_BASE_URL}/api/jobs/get/${jobId}`,
           { withCredentials: true }
         );
         if (updatedJobRes.status === 200) {

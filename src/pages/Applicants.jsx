@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllApplicants } from '@/redux/applicantSlice';
+import API_BASE_URL from '@/api/config';
 
 export default function Applicants() {
 
@@ -15,7 +16,7 @@ export default function Applicants() {
   useEffect(() => {
     const fetchAllApplicants = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/applications/${params.id}/applicants`, { withCredentials: true });
+        const res = await axios.get(`${API_BASE_URL}/api/applications/${params.id}/applicants`, { withCredentials: true });
         console.log(res.data);
 
         if (res.status === 200) {

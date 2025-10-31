@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
+import API_BASE_URL from "@/api/config";
 
 
 export default function EditProfile({ edit, setEdit }) {
@@ -70,7 +71,7 @@ export default function EditProfile({ edit, setEdit }) {
 
     try {
      
-      const res = await axios.put(`http://localhost:8000/api/users/updateProfile`, formData, {
+      const res = await axios.put(`${API_BASE_URL}/api/users/updateProfile`, formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         },
